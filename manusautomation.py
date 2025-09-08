@@ -14,7 +14,7 @@ df = pd.DataFrame(pd.read_excel("sample.xlsx"))
 
 neededColumns = ['Number', 'Correlation ID', 'Legal Entity', 'Short description',
        'Created', 'Planned start date', 'Planned end date', 'Risk', 'Impact',
-       'Assignment Group', 'State', 'Assigned To', 'Type',
+       'Assignment group', 'State', 'Assigned To', 'Type',
        'CAB Approval Group']
 
 
@@ -156,7 +156,7 @@ def getKeyedbyAssignedToAgeingCount(df):
     assignedTo = df.groupby(['Assigned To'])
     # Iterate through the groups and print each one
     for name, group in assignedTo:
-        print(f"Assigned To: {name}")
+        # print(f"Assigned To: {name}")
         # print( group )
         ageingGroup = group.groupby( ['Ageing bucket'] )
         ageingDicts = {}
@@ -185,7 +185,7 @@ def addAssignedToRow( assignedTo, assignedToDict, ageingCount, validBuckets ):
     html += '</tr>'
 
     # Add perState Row
-    stateAgeingCountHtml = '<td class="gmail-xl67" style="border-left:none;border-top:none;border-right:0.5pt solid windowtext;border-bottom:none;padding-top:1px;padding-right:1px;padding-left:1px;color:black;font-size:10pt;font-family:Arial;vertical-align:bottom"></td>{}</td>'
+    stateAgeingCountHtml = '<td class="gmail-xl67" style="border-left:none;border-top:none;border-right:0.5pt solid windowtext;border-bottom:none;padding-top:1px;padding-right:1px;padding-left:1px;color:black;font-size:10pt;font-family:Arial;vertical-align:bottom">{}</td>'
     for stateName in [ 'Scheduled', 'Implement', 'Review' ]:
         if stateName not in assignedToDict.keys():
             continue
@@ -237,7 +237,7 @@ def createPivotHtml( df ):
   print(finalHtml)
 # createPivotHtml(df)
 
-assignedGroupGroup = df.groupby(['Assignment Group'])
+assignedGroupGroup = df.groupby(['Assignment group'])
 
 # Iterate through the groups and print each one
 for assignmentGroup, assignmentGroupDf in assignedGroupGroup:
