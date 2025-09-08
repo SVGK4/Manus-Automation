@@ -14,7 +14,7 @@ df = pd.DataFrame(pd.read_excel("sample.xlsx"))
 
 neededColumns = ['Number', 'Correlation ID', 'Legal Entity', 'Short description',
        'Created', 'Planned start date', 'Planned end date', 'Risk', 'Impact',
-       'Assignment group', 'State', 'Assigned To', 'Type',
+       'Assignment Group', 'State', 'Assigned To', 'Type',
        'CAB Approval Group']
 
 
@@ -148,6 +148,7 @@ def addColumns( validBuckets ):
         html += ageingColumnHtml.format( ageingBucket )
     # GrandTotal
     html += '<td class="gmail-xl65" width="81" style="width:61pt;font-size:10pt;color:black;font-weight:700;font-family:Arial,sans-serif;border-width:0.5pt;border-style:solid;border-color:windowtext windowtext rgb(140,181,249);background:rgb(217,231,253);padding-top:1px;padding-right:1px;padding-left:1px;vertical-align:bottom">Grand Total</td>'
+    html += '</tr>'
     return html
 
 def getKeyedbyAssignedToAgeingCount(df):
@@ -198,6 +199,8 @@ def addAssignedToRow( assignedTo, assignedToDict, ageingCount, validBuckets ):
                 html += stateAgeingCountHtml.format( ageingBuckets[ageingBucket] )
             else:
                 html += stateAgeingCountHtml.format( '' )
+        html += stateAgeingCountHtml.format( '' )
+        html += '</tr>'    
     return html
 
 def addGrandTotalRow( keyedbyAssignedToAgeingCount, validBuckets ):
@@ -237,7 +240,7 @@ def createPivotHtml( df ):
   print(finalHtml)
 # createPivotHtml(df)
 
-assignedGroupGroup = df.groupby(['Assignment group'])
+assignedGroupGroup = df.groupby(['Assignment Group'])
 
 # Iterate through the groups and print each one
 for assignmentGroup, assignmentGroupDf in assignedGroupGroup:
@@ -269,4 +272,3 @@ for assignmentGroup, assignmentGroupDf in assignedGroupGroup:
 # totalHtml += '</tbody></table><br></div></div>'
 # display( HTML( totalHtml ) )
 # print( totalHtml )
-
