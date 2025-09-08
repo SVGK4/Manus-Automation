@@ -9,7 +9,7 @@ Original file is located at
 
 import pandas as pd
 
-df = pd.DataFrame(pd.read_excel("sample.xlsx", engine='openpyxl'))
+df = pd.DataFrame(pd.read_excel("sample.xlsx"))
 # df
 
 neededColumns = ['Number', 'Correlation ID', 'Legal Entity', 'Short description',
@@ -141,13 +141,13 @@ def getValidAgeingBuckets( keyedByAssignedTo ):
 def addColumns( validBuckets ):
     html = ''
     # RowLable
-    html += '<tr height="17" style="height: 12.5pt;"> <td height="17" width="115" style="height: 12.5pt; width: 86pt; font-size: 10pt; color: black; font-weight: 700; font-family: Arial; border-top: none; border-right: none; border-bottom: 0.5pt solid rgb(140, 181, 249); border-left: none; background: rgb(217, 231, 253); padding-top: 1px; padding-right: 1px; padding-left: 1px; vertical-align: bottom; border-image: initial; text-wrap-mode: nowrap;">Assigned To</td>'
+    html += '<tr height="17" style="height: 12.5pt;"> <td height="17" class="gmail-xl65" width="115" style="height:12.5pt;width:86pt;font-size:10pt;color:black;font-weight:700;font-family:Arial,sans-serif;border-width:0.5pt;border-style:solid;border-color:windowtext windowtext rgb(140,181,249);background:rgb(217,231,253);padding-top:1px;padding-right:1px;padding-left:1px;vertical-align:bottom">Assigned To</td>'
     # Ageing Columns
-    ageingColumnHtml = '<td width="40" style="width: 30pt; font-size: 10pt; color: black; font-weight: 700; font-family: Arial; border-top: none; border-right: none; border-bottom: 0.5pt solid rgb(140, 181, 249); border-left: none; background: rgb(217, 231, 253); padding-top: 1px; padding-right: 1px; padding-left: 1px; vertical-align: bottom; border-image: initial; text-wrap-mode: nowrap;">{}</td>'
+    ageingColumnHtml = '<td class="gmail-xl65" width="117" style="width:88pt;font-size:10pt;color:black;font-weight:700;font-family:Arial,sans-serif;border-width:0.5pt;border-style:solid;border-color:windowtext windowtext rgb(140,181,249);background:rgb(217,231,253);padding-top:1px;padding-right:1px;padding-left:1px;vertical-align:bottom">{}</td>'
     for ageingBucket in validBuckets:
         html += ageingColumnHtml.format( ageingBucket )
     # GrandTotal
-    html += '<td width="81" style="width: 61pt; font-size: 10pt; color: black; font-weight: 700; font-family: Arial; border-top: none; border-right: none; border-bottom: 0.5pt solid rgb(140, 181, 249); border-left: none; background: rgb(217, 231, 253); padding-top: 1px; padding-right: 1px; padding-left: 1px; vertical-align: bottom; border-image: initial; text-wrap-mode: nowrap;">Grand Total</td>'
+    html += '<td class="gmail-xl65" width="81" style="width:61pt;font-size:10pt;color:black;font-weight:700;font-family:Arial,sans-serif;border-width:0.5pt;border-style:solid;border-color:windowtext windowtext rgb(140,181,249);background:rgb(217,231,253);padding-top:1px;padding-right:1px;padding-left:1px;vertical-align:bottom">Grand Total</td>'
     return html
 
 def getKeyedbyAssignedToAgeingCount(df):
@@ -171,8 +171,8 @@ def getKeyedbyAssignedToAgeingCount(df):
 # getKeyedbyAssignedToAgeingCount( df )
 
 def addAssignedToRow( assignedTo, assignedToDict, ageingCount, validBuckets ):
-    html = f'<tr height="17" style="height: 12.5pt;"><td height="17" class="gmail-xl65" style="height: 12.5pt; font-size: 10pt; color: black; font-weight: 700; font-family: Arial; border-top: none; border-right: none; border-bottom: 0.5pt solid rgb(140, 181, 249); border-left: none; padding-top: 1px; padding-right: 1px; padding-left: 1px; vertical-align: bottom; border-image: initial; text-wrap-mode: nowrap;">{assignedTo}</td>'
-    agengTotalHtml = '<td align="right" style="font-size: 10pt; color: black; font-weight: 700; font-family: Arial; border-top: none; border-right: none; border-bottom: 0.5pt solid rgb(140, 181, 249); border-left: none; padding-top: 1px; padding-right: 1px; padding-left: 1px; vertical-align: bottom; border-image: initial; text-wrap-mode: nowrap;">{}</td>'
+    html = f'<tr height="17" style="height: 12.5pt;"><td height="17" class="gmail-xl66" style="height:12.5pt;font-size:10pt;color:black;font-weight:700;font-family:Arial,sans-serif;border-bottom:none;border-right:0.5pt solid windowtext;border-top:0.5pt solid rgb(140,181,249);border-left:0.5pt solid windowtext;padding-top:1px;padding-right:1px;padding-left:1px;vertical-align:bottom">{assignedTo}</td>'
+    agengTotalHtml = '<td class="gmail-xl67" align="right" style="font-size:10pt;color:black;font-weight:700;font-family:Arial,sans-serif;border-bottom:none;border-right:0.5pt solid windowtext;border-top:0.5pt solid rgb(140,181,249);border-left:0.5pt solid windowtext;padding-top:1px;padding-right:1px;padding-left:1px;vertical-align:bottom">{}</td>'
     total = 0
     for ageingBucket in validBuckets:
         if ageingBucket in ageingCount.keys():
@@ -181,18 +181,18 @@ def addAssignedToRow( assignedTo, assignedToDict, ageingCount, validBuckets ):
         else:
             html += agengTotalHtml.format( '' )
     # TODO add grand total
-    html += f'<td align="right" style="font-size: 10pt; color: black; font-weight: 700; font-family: Arial; border-top: none; border-right: none; border-bottom: 0.5pt solid rgb(140, 181, 249); border-left: none; padding-top: 1px; padding-right: 1px; padding-left: 1px; vertical-align: bottom; border-image: initial; text-wrap-mode: nowrap;">{total}</td>'
+    html += f'<td class="gmail-xl67" align="right" style="font-size:10pt;color:black;font-weight:700;font-family:Arial,sans-serif;border-bottom:none;border-right:0.5pt solid windowtext;border-top:0.5pt solid rgb(140,181,249);border-left:0.5pt solid windowtext;padding-top:1px;padding-right:1px;padding-left:1px;vertical-align:bottom">{total}</td>'
     html += '</tr>'
 
     # Add perState Row
-    stateAgeingCountHtml = '<td align="right" style="padding-top: 1px; padding-right: 1px; padding-left: 1px; color: black; font-size: 10pt; font-family: Arial; vertical-align: bottom; border: none; text-wrap-mode: nowrap;">{}</td>'
+    stateAgeingCountHtml = '<td class="gmail-xl67" style="border-left:none;border-top:none;border-right:0.5pt solid windowtext;border-bottom:none;padding-top:1px;padding-right:1px;padding-left:1px;color:black;font-size:10pt;font-family:Arial;vertical-align:bottom"></td>{}</td>'
     for stateName in [ 'Scheduled', 'Implement', 'Review' ]:
         if stateName not in assignedToDict.keys():
             continue
         ageingBuckets = assignedToDict[stateName]
     # for stateName, ageingBuckets in assignedToDict.items():
         html += '<tr height="17" style="height: 12.5pt;">'
-        html += f'<td height="17" class="gmail-xl66" style="height: 12.5pt; padding-left: 18px; padding-top: 1px; padding-right: 1px; color: black; font-size: 10pt; font-family: Arial; vertical-align: bottom; border: none; text-wrap-mode: nowrap;">{stateName}</td>'
+        html += f'<td height="17" class="gmail-xl68" style="height:12.5pt;border-top:none;border-right:0.5pt solid windowtext;border-bottom:none;border-left:0.5pt solid windowtext;padding-left:18px;padding-top:1px;padding-right:1px;color:black;font-size:10pt;font-family:Arial;vertical-align:bottom">{stateName}</td>'
         for ageingBucket in validBuckets:
             if ageingBucket in ageingBuckets.keys():
                 html += stateAgeingCountHtml.format( ageingBuckets[ageingBucket] )
@@ -201,8 +201,8 @@ def addAssignedToRow( assignedTo, assignedToDict, ageingCount, validBuckets ):
     return html
 
 def addGrandTotalRow( keyedbyAssignedToAgeingCount, validBuckets ):
-    html = '<tr height="17" style="height: 12.5pt;"> <td height="17" class="gmail-xl65" style="height: 12.5pt; font-size: 10pt; color: black; font-weight: 700; font-family: Arial; border-top: 0.5pt solid rgb(140, 181, 249); border-right: none; border-bottom: none; border-left: none; background: rgb(217, 231, 253); padding-top: 1px; padding-right: 1px; padding-left: 1px; vertical-align: bottom; border-image: initial; text-wrap-mode: nowrap;">Grand Total</td>'
-    ageingTotalHtml = '<td align="right" style="font-size: 10pt; color: black; font-weight: 700; font-family: Arial; border-top: 0.5pt solid rgb(140, 181, 249); border-right: none; border-bottom: none; border-left: none; background: rgb(217, 231, 253); padding-top: 1px; padding-right: 1px; padding-left: 1px; vertical-align: bottom; border-image: initial; text-wrap-mode: nowrap;">{}</td>'
+    html = '<tr height="17" style="height: 12.5pt;"> <td height="17" class="gmail-xl69" style="height:12.5pt;font-size:10pt;color:black;font-weight:700;font-family:Arial,sans-serif;border-width:0.5pt;border-style:solid;border-color:rgb(140,181,249) windowtext windowtext;background:rgb(217,231,253);padding-top:1px;padding-right:1px;padding-left:1px;vertical-align:bottom">Grand Total</td>'
+    ageingTotalHtml = '<td class="gmail-xl70" align="right" style="font-size:10pt;color:black;font-weight:700;font-family:Arial,sans-serif;border-width:0.5pt;border-style:solid;border-color:rgb(140,181,249) windowtext windowtext;background:rgb(217,231,253);padding-top:1px;padding-right:1px;padding-left:1px;vertical-align:bottom">{}</td>'
     grandTotal = 0
     for ageingBucket in validBuckets:
         ageingBucketTotal = 0
